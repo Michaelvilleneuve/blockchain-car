@@ -10,6 +10,7 @@ export class CarList extends Component {
     API.get('com.epsi.blockchain.Car')
       .then((res) => {
         console.log(res);
+        this.setState({ cars: res });
       });
   }
 
@@ -17,8 +18,9 @@ export class CarList extends Component {
     return (
       <div className="container login-container">
         Les voitures !
-
-        {this.state.cars.map(car => (<div>{car}</div>))}
+        <ul>
+          {this.state.cars.map(car => (<li> {car.brand} {car.model} : {car.km} kms</li>))}
+        </ul>
       </div>
     );
   }
