@@ -1,0 +1,9 @@
+.car {
+  width: 90%;
+  max-width: 400px;
+}
+.car a {
+  outline: none;
+  text-decoration: none;
+  color: #444;
+}

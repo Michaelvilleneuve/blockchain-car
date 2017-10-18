@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Login } from './ui/auth';
-import { CarList } from './ui/cars';
+import { CarList, CarShow } from './ui/cars';
 
 export default class App extends Component {
   constructor(props) {
@@ -20,9 +20,12 @@ export default class App extends Component {
   render() {
     if (!this.state.auth) return <Login onLogin={this.login.bind(this)} />;
     return (
-      <Router>
-        <Route exact path="/" component={CarList} />
-      </Router>
+        <Router>
+          <div>
+            <Route exact path="/" component={CarList} />
+            <Route path="/cars/:carId" component={CarShow} />
+          </div>
+        </Router>
     );
   }
 }

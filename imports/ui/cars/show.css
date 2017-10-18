@@ -1,0 +1,25 @@
+.car-show {
+  display: flex;
+  flex-direction: column;
+}
+.car-show h1 {
+  margin-bottom: 20px;
+}
+.car-show a {
+  margin-top: 20px;
+}
+.info > p:first-child {
+  font-size: 21px;
+  font-weight: 400;
+}
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  border-bottom: 1px solid #CCC;
+}
+.info:last-child {
+  border-bottom: 0px solid #CCC;
+}
