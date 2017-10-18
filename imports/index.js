@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Login } from './ui/auth';
+import { CarList } from './ui/cars';
 
 export default class App extends Component {
-  renderTasks() {
-    return [
-      { _id: 1, text: 'This is task 1' },
-      { _id: 2, text: 'This is task 2' },
-      { _id: 3, text: 'This is task 3' },
-    ].map((task) => (
-      <div>
-        {task.text} lol
-      </div>
-    ));
+  constructor(props) {
+    super(props);
+    this.state = { pending: true, auth: false };
+  }
+
+  componentWillMount() {
+    this.login();
+  }
+
+  login() {
+    this.setState({ auth: localStorage.getItem('auth') });
   }
 
   render() {
+    if (!this.state.auth) return <Login onLogin={this.login.bind(this)} />;
     return (
-      <div className="container">
-        <header>
-          <h1>Todo List</h1>
-        </header>
-
-        <ul>
-          {this.renderTasks()}
-        </ul>
-      </div>
+      <Router>
+        <Route exact path="/" component={CarList} />
+      </Router>
     );
   }
 }

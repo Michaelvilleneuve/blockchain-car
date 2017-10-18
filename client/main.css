@@ -1,1 +1,49 @@
-/* CSS declarations go here */
+body {
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+input {
+  width: 90%;
+  color: #999;
+  margin: 15px;
+  height: 25px;
+  outline: none;
+  font-size: 17px;
+  font-weight: 100;
+  border-width: 0px;
+  padding: 5px 15px;
+  border-radius: 40px;
+  box-shadow: 2px 1px 10px #E1E1E1;
+}
+
+button {
+  width: 90%;
+  color: #FFF;
+  margin: 10px;
+  height: 35px;
+  border-width: 0;
+  cursor: pointer;
+  font-size: 16px;
+  max-width: 200px;
+  transition: 0.3s;
+  font-weight: 500;
+  border-radius: 40px;
+  background: linear-gradient(to right, #b732ff 0%,#ff0083 100%);
+}
+button:hover {
+  box-shadow: 2px 1px 15px #C6C6C6;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: white !important;
+}

@@ -9,6 +9,7 @@
   "globals": {
     "fetch": false,
     "alert": false,
+    "localStorage": false,
     "FormData": false,
     "Headers": false,
     "__DEV__": false,

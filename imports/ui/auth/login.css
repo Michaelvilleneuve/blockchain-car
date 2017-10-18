@@ -1,0 +1,13 @@
+.login-form {
+  width: 90%;
+  max-width: 400px;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container {
+    background: linear-gradient(to left, #E1E1E1 0%,#FFF 100%);
+}
