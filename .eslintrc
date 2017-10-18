@@ -1,0 +1,20 @@
+{
+  "extends": "rallycoding",
+  "rules": {
+    "arrow-body-style": 0,
+    "global-require": 0,
+    "import/extensions": ["off", "never"],
+    "import/no-extraneous-dependencies": 0
+  },
+  "globals": {
+    "fetch": false,
+    "alert": false,
+    "FormData": false,
+    "Headers": false,
+    "__DEV__": false,
+    "document": false,
+  },
+  "settings": {
+    "import/resolver": "meteor"
+  }
+}
