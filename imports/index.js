@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Header } from './ui/layouts';
 import { Login } from './ui/auth';
 import { CarList, CarShow, NewCar } from './ui/cars';
 
@@ -20,6 +21,8 @@ export default class App extends Component {
   render() {
     if (!this.state.auth) return <Login onLogin={this.login.bind(this)} />;
     return (
+      <div>
+        <Header />
         <Router>
           <div>
             <Route exact path="/" component={CarList} />
@@ -27,6 +30,7 @@ export default class App extends Component {
             <Route exact path="/new" component={NewCar} />
           </div>
         </Router>
+      </div>
     );
   }
 }
