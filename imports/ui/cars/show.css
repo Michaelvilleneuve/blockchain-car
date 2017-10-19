@@ -20,7 +20,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
+  width: 600px;
   border-bottom: 1px solid #CCC;
 }
 .info:last-child {

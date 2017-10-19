@@ -51,11 +51,24 @@ export class CarShow extends Component {
         </div>
         <div className="info">
           <p>Repairs</p>
-          <p>{(this.state.repair || []).map(repair => {})}</p>
+          <ul>
+          {(this.state.repair || []).map(repair => {
+            return (
+              <li> {repair.date} - {repair.price}€ : {repair.repair} </li>
+            )
+          })}
+          </ul>
         </div>
         <div className="info">
           <p>Previous owners</p>
-          <p>{(this.state.repair || []).map(repair => {})}</p>
+          <ul>
+              {(this.state.previousOwners || []).map(owner => {
+                owner = owner.split("#")[1];
+                return (
+                  <li> {owner} </li>
+                );
+              })}
+          </ul>
         </div>
         <a className="button is-primary" onClick={this.buy.bind(this)}>Buy this car</a>
       </div>
