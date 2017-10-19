@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import API from '/imports/api';
+import API from '../../api';
 
-import { CarItem } from './components';
-import './list.css';
+import { CarItem } from '../cars/components';
+import '../cars/list.css';
 
-export class CarList extends Component {
+export class SellsList extends Component {
   constructor(props) {
     super(props);
     this.state = { cars: [] };

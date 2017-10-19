@@ -8,12 +8,19 @@ export class Header extends Component {
           <a className="navbar-item" href="/">
             <strong>Cars</strong>
           </a>
-
-          <a className="navbar-item" href="/car/new">
+        </div>
+        <div className="navbar-menu">
+          <a className="navbar-item" href="/cars/new">
             Sell
           </a>
           <a className="navbar-item" href="/">
             Buy
+          </a>
+          <a className="navbar-item" href="/sells">
+            My sells
+          </a>
+          <a className="navbar-item" href="/purchases">
+            My purchases
           </a>
         </div>
       </nav>

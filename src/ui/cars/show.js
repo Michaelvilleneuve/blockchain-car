@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import API from '/imports/api';
+import API from '../../api';
 import './show.css';
 
 export class CarShow extends Component {
@@ -18,18 +18,16 @@ export class CarShow extends Component {
 
     API.post('com.epsi.blockchain.SellCar', {
       $class: 'com.epsi.blockchain.SellCar',
-      car: `resource:com.epsi.blockchain.Car#numberplate:${this.state.numberplate}`,
+      car: `resource:com.epsi.blockchain.Car#${this.state.numberplate}`,
+      buyer: `resource:com.epsi.blockchain.Person#${user.email}`,
       seller: this.state.owner,
-      buyer: `resource:com.epsi.blockchain.Person#email:${user.email}`,
-      price: this.state.price,
-      km: this.state.km,
       password: user.password
     })
     .then((res) => {
       if (res.error) {
         alert('Impossible de procéder à la transaction');
       } else {
-        alert('Votre demande d\'achat a été acceptée');
+        alert('Proposition correctly sent to the buyer.');
       }
     });
   }
@@ -51,24 +49,11 @@ export class CarShow extends Component {
         </div>
         <div className="info">
           <p>Repairs</p>
-          <ul>
-          {(this.state.repair || []).map(repair => {
-            return (
-              <li> {repair.date} - {repair.price}€ : {repair.repair} </li>
-            )
-          })}
-          </ul>
+          <p>{(this.state.repair || []).map(repair => {})}</p>
         </div>
         <div className="info">
           <p>Previous owners</p>
-          <ul>
-              {(this.state.previousOwners || []).map(owner => {
-                owner = owner.split("#")[1];
-                return (
-                  <li> {owner} </li>
-                );
-              })}
-          </ul>
+          <p>{(this.state.repair || []).map(repair => {})}</p>
         </div>
         <a className="button is-primary" onClick={this.buy.bind(this)}>Buy this car</a>
       </div>
