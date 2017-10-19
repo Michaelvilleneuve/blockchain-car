@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from '/imports/api';
 
 import { CarItem } from './components';
+import './list.css';
 
 export class CarList extends Component {
   constructor(props) {
@@ -17,7 +18,9 @@ export class CarList extends Component {
   render() {
     return (
       <div className="container">
-        {this.state.cars.map(car => <CarItem {...car} />)}
+        <div className="container-car">
+          {this.state.cars.map(car => <CarItem {...car} />)}
+        </div>
       </div>
     );
   }
