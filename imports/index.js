@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Header } from './ui/layouts';
 import { Login } from './ui/auth';
 import { CarList, CarShow, NewCar } from './ui/cars';
@@ -24,11 +24,11 @@ export default class App extends Component {
       <div>
         <Header />
         <Router>
-          <div>
+          <Switch>
             <Route exact path="/" component={CarList} />
-            <Route exact path="/car/new/" component={NewCar} />
+            <Route path="/cars/new" component={NewCar} />
             <Route path="/cars/:carId" component={CarShow} />
-          </div>
+          </Switch>
         </Router>
       </div>
     );

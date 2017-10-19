@@ -35,25 +35,29 @@ export class CarShow extends Component {
   }
 
   render() {
-    if (this.state.pending) return <div className="center">Chargement</div>;
+    if (this.state.pending) return <div className="center">Loading...</div>;
     return (
       <div className="container car-show">
         <img width="200" alt="" src={this.state.image} />
         <br />
         <h1 className="title is-1">{this.state.brand} {this.state.model}</h1>
         <div className="info">
-          <p>Prix</p>
+          <p>Price</p>
           <p>{this.state.price} €</p>
         </div>
         <div className="info">
-          <p>Kilomètres</p>
+          <p>Kilometers</p>
           <p>{this.state.km} €</p>
         </div>
         <div className="info">
-          <p>Réparations</p>
+          <p>Repairs</p>
           <p>{(this.state.repair || []).map(repair => {})}</p>
         </div>
-        <a className="button is-primary" onClick={this.buy.bind(this)}>Acheter cette voiture</a>
+        <div className="info">
+          <p>Previous owners</p>
+          <p>{(this.state.repair || []).map(repair => {})}</p>
+        </div>
+        <a className="button is-primary" onClick={this.buy.bind(this)}>Buy this car</a>
       </div>
     );
   }

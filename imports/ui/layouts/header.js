@@ -6,11 +6,14 @@ export class Header extends Component {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
-            Voitures
+            <strong>Cars</strong>
           </a>
 
           <a className="navbar-item" href="/car/new">
-            Ajouter une voiture
+            Sell
+          </a>
+          <a className="navbar-item" href="/">
+            Buy
           </a>
         </div>
       </nav>
