@@ -4,6 +4,7 @@ import { Header } from './ui/layouts';
 import { Login } from './ui/auth';
 import { CarList, CarShow, NewCar } from './ui/cars';
 import { SellsList } from "./ui/sells";
+import { NewRepair } from "./ui/repair";
 import './App.css';
 
 
@@ -29,6 +30,7 @@ export default class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={CarList} />
+            <Route path="/cars/:carId/addRepair" component={NewRepair} />
             <Route path="/cars/new" component={NewCar} />
             <Route path="/cars/:carId" component={CarShow} />
             <Route path="/sells" component={SellsList} />
