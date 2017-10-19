@@ -9,7 +9,7 @@ export class NewCar extends Component {
     const auth = JSON.parse(localStorage.getItem('auth'));
     const owner = auth.email;
 
-    alert('ALERT')
+    alert('ALERT');
 
     this.state = {
       owner: `resource:com.epsi.blockchain.Person#${owner}`,

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import API from '/imports/api';
-import { Link } from 'react-router-dom';
 
 import { CarItem } from './components';
 import './list.css';
