@@ -4,6 +4,8 @@ import { Header } from './ui/layouts';
 import { Login } from './ui/auth';
 import { CarList, CarShow, NewCar } from './ui/cars';
 import { SellsList } from "./ui/sells";
+import './App.css';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -21,11 +23,10 @@ export default class App extends Component {
 
   render() {
     if (!this.state.auth) return <Login onLogin={this.login.bind(this)} />;
-    const hashHistory = ReactRouter.hashHistory;
     return (
       <div>
         <Header />
-        <Router history={hashHistory}>
+        <Router>
           <Switch>
             <Route exact path="/" component={CarList} />
             <Route path="/cars/new" component={NewCar} />
