@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Header } from './ui/layouts';
 import { Login } from './ui/auth';
-import { CarList, CarShow, NewCar } from './ui/cars';
+import { CarList, CarShow, NewCar, CarRepair } from './ui/cars';
 
 export default class App extends Component {
   constructor(props) {
@@ -26,7 +26,8 @@ export default class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={CarList} />
-            <Route path="/cars/new" component={NewCar} />
+            <Route exact path="/cars/new/" component={NewCar} />
+            <Route path="/car/repair/:carId/" component={CarRepair} />
             <Route path="/cars/:carId" component={CarShow} />
           </Switch>
         </Router>
