@@ -20,6 +20,7 @@ export class CarList extends Component {
       <div className="container">
         <div className="container-car">
           {this.state.cars.map(car => <CarItem {...car} />)}
+          {!this.state.cars.length && 'Loading...'}
         </div>
       </div>
     );
