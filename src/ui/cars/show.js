@@ -25,7 +25,7 @@ export class CarShow extends Component {
     })
     .then((res) => {
       if (res.error) {
-        alert('Impossible de procéder à la transaction');
+        alert('Impossible de procéder à la transaction, une proposition est déjà en cours.');
       } else {
         alert('Proposition correctly sent to the buyer.');
       }
@@ -68,6 +68,7 @@ export class CarShow extends Component {
               })}
           </ul>
         </div>
+        <a className="button" href={"/cars/" +  this.props.match.params.carId + "/addRepair"}> Declare reparation </a>
         <a className="button is-primary" onClick={this.buy.bind(this)}>Buy this car</a>
       </div>
     );

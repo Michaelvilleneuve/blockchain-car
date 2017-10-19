@@ -7,8 +7,7 @@ import '../cars/list.css';
 export class NewRepair extends Component {
   constructor(props) {
     super(props);
-    const carID = this.props.location.pathname.split("/")[2];
-    console.log(carID);
+    const carID = this.props.match.params.carId;
 
     this.state = {
       car: `resource:com.epsi.blockchain.Car#${carID}`,
@@ -36,7 +35,7 @@ export class NewRepair extends Component {
     return (
       <div className="container car-container">
         <div className="car-form">
-          <h3>Nouvelle réparation</h3>
+          <h3>New reparation </h3>
           <input
             onChange={(description) => this.setState({ description: description.target.value })}
             value={this.state.repair}
@@ -44,15 +43,17 @@ export class NewRepair extends Component {
             placeholder="Description"
             name="repair"
           />
+          <br/>
           <input
             onChange={(repairPrice) => this.setState({ repairPrice: repairPrice.target.value })}
             type="number"
             value={this.state.repairPrice}
-            placeholder="Prix"
+            placeholder="Price"
             name="price"
           />€
+          <br/>
           <button onClick={this.create.bind(this)}>
-            {!this.state.creating ? 'Déclarer la réparation' : 'Création en cours'}
+            {!this.state.creating ? 'Add reparation' : 'creating...'}
           </button>
         </div>
       </div>
