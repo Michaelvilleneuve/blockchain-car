@@ -12,15 +12,15 @@ export class NewRepair extends Component {
 
     this.state = {
       car: `resource:com.epsi.blockchain.Car#${carID}`,
-      repair: '',
-      price: 0,
+      description: '',
+      repairPrice: 0,
       creating: false,
       created: false
     };
   }
 
   create() {
-    API.post('com.epsi.blockchain.Repair', this.state)
+    API.post('com.epsi.blockchain.AddRepair', this.state)
       .then((res) => {
         if (res.error) {
           this.setState({ creating: false });
@@ -34,9 +34,26 @@ export class NewRepair extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="container-car">
-          TODO Insérer form + faire lien vers create()
+      <div className="container car-container">
+        <div className="car-form">
+          <h3>Nouvelle réparation</h3>
+          <input
+            onChange={(description) => this.setState({ description: description.target.value })}
+            value={this.state.repair}
+            type="textarea"
+            placeholder="Description"
+            name="repair"
+          />
+          <input
+            onChange={(repairPrice) => this.setState({ repairPrice: repairPrice.target.value })}
+            type="number"
+            value={this.state.repairPrice}
+            placeholder="Prix"
+            name="price"
+          />€
+          <button onClick={this.create.bind(this)}>
+            {!this.state.creating ? 'Déclarer la réparation' : 'Création en cours'}
+          </button>
         </div>
       </div>
     );
