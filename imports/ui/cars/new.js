@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from '/imports/api';
-//import { Redirect } from 'react-router'
+import { Redirect } from 'react-router'
 //import './car.css';
 
 export class NewCar extends Component {
@@ -18,7 +18,8 @@ export class NewCar extends Component {
       price: 0,
       image: '',
       km: 0,
-      creating: false
+      creating: false,
+      created: false,
     };
   }
 
@@ -30,11 +31,7 @@ export class NewCar extends Component {
           this.setState({ creating: false });
           alert('Impossible de vous enregister');
         } else {
-          // TODO redirection
-
-          console.log(res);
-
-          //return (<Redirect to="/cars/"+ />);
+          this.setState({ created: true });
         }
       })
      .catch(() => this.setState({ creating: false }));
@@ -43,6 +40,9 @@ export class NewCar extends Component {
   render() {
     return (
       <div className="container car-container">
+        {this.state.created &&
+          <Redirect to={`/car/${this.state.numberplate}`} />
+        }
         <div className="car-form">
           <h3>Vendez votre voiture</h3>
           <input
