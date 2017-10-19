@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-  
+
 export class Header extends Component {
   render() {
     return (
@@ -9,11 +9,9 @@ export class Header extends Component {
             Voitures
           </a>
 
-          <button className="button navbar-burger">
-            <span />
-            <span />
-            <span />
-          </button>
+          <a className="navbar-item" href="/car/new">
+            Ajouter une voiture
+          </a>
         </div>
       </nav>
     );

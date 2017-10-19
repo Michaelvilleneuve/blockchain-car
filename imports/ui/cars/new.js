@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import API from '/imports/api';
-import { Redirect } from 'react-router'
-//import './car.css';
+import { Redirect } from 'react-router';
 
 export class NewCar extends Component {
   constructor(props) {
@@ -9,6 +8,8 @@ export class NewCar extends Component {
 
     const auth = JSON.parse(localStorage.getItem('auth'));
     const owner = auth.email;
+
+    alert('ALERT')
 
     this.state = {
       owner: `resource:com.epsi.blockchain.Person#${owner}`,
@@ -26,7 +27,6 @@ export class NewCar extends Component {
   create() {
     API.post('com.epsi.blockchain.Car', this.state)
       .then((res) => {
-        console.log(this.state);
         if (res.error) {
           this.setState({ creating: false });
           alert('Impossible d\'enregister votre voiture');

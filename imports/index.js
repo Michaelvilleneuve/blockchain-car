@@ -26,8 +26,8 @@ export default class App extends Component {
         <Router>
           <div>
             <Route exact path="/" component={CarList} />
+            <Route exact path="/car/new/" component={NewCar} />
             <Route path="/cars/:carId" component={CarShow} />
-            <Route exact path="/new" component={NewCar} />
           </div>
         </Router>
       </div>
