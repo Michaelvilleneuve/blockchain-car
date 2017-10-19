@@ -21,6 +21,7 @@ export class CarList extends Component {
         <div className="container-car">
           {this.state.cars.map(car => <CarItem {...car} />)}
         </div>
+        <a href="/new">Ajouter une voiture</a>
       </div>
     );
   }
