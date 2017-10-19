@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import API from '/imports/api';
-import './login.css';
 
 export class Login extends Component {
   constructor(props) {
@@ -9,8 +8,6 @@ export class Login extends Component {
   }
 
   login() {
-    const { email, password } = this.state;
-
     this.setState({ creating: true });
     API.post('com.epsi.blockchain.Person', this.state)
       .then((res) => {
@@ -18,7 +15,7 @@ export class Login extends Component {
           this.setState({ creating: false });
           alert('Impossible de vous enregister');
         } else {
-          localStorage.setItem('auth', JSON.stringify({ email, password }));
+          localStorage.setItem('auth', JSON.stringify(res));
           this.props.onLogin();
         }
       })
@@ -29,36 +26,48 @@ export class Login extends Component {
     return (
       <div className="container login-container">
         <div className="login-form">
-          <h3>Vendez votre voiture</h3>
-          <input
-            onChange={(firstname) => this.setState({ firstname: firstname.target.value })}
-            value={this.state.firstname}
-            placeholder="Prénom"
-            name="firstname"
-          />
-          <input
-            onChange={(name) => this.setState({ name: name.target.value })}
-            value={this.state.name}
-            placeholder="Nom"
-            name="lastname"
-          />
-          <input
-            onChange={(email) => this.setState({ email: email.target.value })}
-            value={this.state.email}
-            autoComplete="new-email"
-            placeholder="E-mail"
-            type="email"
-            name="email"
-          />
-          <input
-            placeholder="Mot de passe"
-            autoComplete="new-password"
-            value={this.state.password}
-            name="password"
-            type="password"
-            onChange={(password) => this.setState({ password: password.target.value })}
-          />
-          <button onClick={this.login.bind(this)}>
+          <h3 className="title is-h3" style={{ marginBottom: 20 }}>Vendez votre voiture</h3>
+          <div className="field">
+            <input
+              onChange={(firstname) => this.setState({ firstname: firstname.target.value })}
+              value={this.state.firstname}
+              className="input"
+              placeholder="Prénom"
+              name="firstname"
+            />
+          </div>
+          <div className="field">
+            <input
+              onChange={(name) => this.setState({ name: name.target.value })}
+              value={this.state.name}
+              className="input"
+              placeholder="Nom"
+              name="lastname"
+            />
+          </div>
+          <div className="field">
+            <input
+              onChange={(email) => this.setState({ email: email.target.value })}
+              value={this.state.email}
+              className="input"
+              autoComplete="new-email"
+              placeholder="E-mail"
+              type="email"
+              name="email"
+            />
+          </div>
+          <div className="field">
+            <input
+              placeholder="Mot de passe"
+              autoComplete="new-password"
+              value={this.state.password}
+              className="input"
+              name="password"
+              type="password"
+              onChange={(password) => this.setState({ password: password.target.value })}
+            />
+          </div>
+          <button className="button is-primary" onClick={this.login.bind(this)}>
             {!this.state.creating ? 'Créer un compte' : 'Création en cours'}
           </button>
         </div>

@@ -5,6 +5,9 @@
 .car-show h1 {
   margin-bottom: 20px;
 }
+.car-show img {
+  border-radius: 20px;
+}
 .car-show a {
   margin-top: 20px;
 }

@@ -11,7 +11,7 @@ export const CarItem = (car) => {
             <img src={car.image || 'https://bulma.io/images/placeholders/128x128.png'} alt="" />
           </figure>
         </div>
-        <Link to={`/cars/${car.carID}`} className="car-detail">
+        <Link to={`/cars/${car.numberplate}`} className="car-detail">
           <div className="media-content">
             <div className="content">
               <strong>{car.brand} {car.model}</strong>
