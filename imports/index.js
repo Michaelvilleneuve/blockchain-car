@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Login } from './ui/auth';
-import { CarList, CarShow } from './ui/cars';
+import { CarList, CarShow, NewCar } from './ui/cars';
 
 export default class App extends Component {
   constructor(props) {
@@ -24,6 +24,7 @@ export default class App extends Component {
           <div>
             <Route exact path="/" component={CarList} />
             <Route path="/cars/:carId" component={CarShow} />
+            <Route exact path="/new" component={NewCar} />
           </div>
         </Router>
     );
