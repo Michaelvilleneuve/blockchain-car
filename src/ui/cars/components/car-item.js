@@ -17,6 +17,11 @@ export const CarItem = (car) => {
               <strong>{car.brand} {car.model}</strong>
               <br />
               <p>{car.km} km</p>
+              {car.pending &&
+                <p>Your offer is pending acceptation</p>}
+              {car.propositionBuyer &&
+                <p>This car received an offer !</p>
+              }
             </div>
           </div>
         </Link>

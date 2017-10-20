@@ -39,52 +39,70 @@ export class NewCar extends Component {
     return (
       <div className="container car-container">
         {this.state.created &&
-          <Redirect to={`/car/${this.state.numberplate}`} />
+          <Redirect to={`/cars/${this.state.numberplate}`} />
         }
         <div className="car-form">
-          <h3>Vendez votre voiture</h3>
-          <input
-            onChange={(numberplate) => this.setState({ numberplate: numberplate.target.value })}
-            value={this.state.numberplate}
-            placeholder="Plaque d'imatriculation"
-            name="numberplate"
-          />
+          <h3 className="title is-h3">Vendez votre voiture</h3>
 
-          <input
-            onChange={(brand) => this.setState({ brand: brand.target.value })}
-            value={this.state.brand}
-            placeholder="Marque"
-            name="brand"
-          />
+          <div className="field">
+            <input
+              onChange={(numberplate) => this.setState({ numberplate: numberplate.target.value })}
+              value={this.state.numberplate}
+              className="input"
+              placeholder="Plaque d'imatriculation"
 
-          <input
-            onChange={(model) => this.setState({ model: model.target.value })}
-            value={this.state.model}
-            placeholder="Modèle"
-            name="model"
-          />
-          <input
-            onChange={(price) => this.setState({ price: price.target.value })}
-            type="number"
-            value={this.state.price}
-            placeholder="Prix"
-            name="price"
-          />€
-          <input
-            onChange={(km) => this.setState({ km: km.target.value })}
-            type="number"
-            value={this.state.km}
-            placeholder="Km"
-            name="km"
-          />Km
-          <input
-            onChange={(image) => this.setState({ image: image.target.value })}
-            value={this.state.image}
-            placeholder="URl de l'image"
-            name="image"
-          />
+              name="numberplate"
+            />
+          </div>
+          <div className="field">
+            <input
+              onChange={(brand) => this.setState({ brand: brand.target.value })}
+              value={this.state.brand}
+              className="input"
+              placeholder="Marque"
+              name="brand"
+            />
+          </div>
+          <div className="field">
+            <input
+              onChange={(model) => this.setState({ model: model.target.value })}
+              value={this.state.model}
+              className="input"
+              placeholder="Modèle"
+              name="model"
+            />
+          </div>
+          <div className="field">
+            <input
+              onChange={(price) => this.setState({ price: price.target.value })}
+              type="number"
+              value={this.state.price}
+              className="input"
+              placeholder="Prix"
+              name="price"
+            />
+          </div>
+          <div className="field">
+            <input
+              onChange={(km) => this.setState({ km: km.target.value })}
+              type="number"
+              value={this.state.km}
+              className="input"
+              placeholder="Km"
+              name="km"
+            />
+          </div>
+          <div className="field">
+            <input
+              onChange={(image) => this.setState({ image: image.target.value })}
+              value={this.state.image}
+              className="input"
+              placeholder="URl de l'image"
+              name="image"
+            />
+          </div>
 
-          <button onClick={this.create.bind(this)}>
+          <button className="button is-primary" onClick={this.create.bind(this)}>
             {!this.state.creating ? 'Ajouter une voiture' : 'Création en cours'}
           </button>
         </div>

@@ -14,14 +14,14 @@ export class CarShow extends Component {
   }
 
   buy() {
-    const user = JSON.parse(localStorage.getItem('auth'));
+
 
     API.post('com.epsi.blockchain.SellCar', {
       $class: 'com.epsi.blockchain.SellCar',
       car: `resource:com.epsi.blockchain.Car#${this.state.numberplate}`,
-      buyer: `resource:com.epsi.blockchain.Person#${user.email}`,
+      buyer: `resource:com.epsi.blockchain.Person#${this.user.email}`,
       seller: this.state.owner,
-      password: user.password
+      password: this.user.password
     })
     .then((res) => {
       if (res.error) {
@@ -33,6 +33,7 @@ export class CarShow extends Component {
   }
 
   render() {
+    this.user = JSON.parse(localStorage.getItem('auth'));
     if (this.state.pending) return <div className="center">Loading...</div>;
     return (
       <div className="container car-show">
@@ -68,8 +69,10 @@ export class CarShow extends Component {
               })}
           </ul>
         </div>
-        <a className="button" href={"/cars/" +  this.props.match.params.carId + "/addRepair"}> Declare reparation </a>
-        <a className="button is-primary" onClick={this.buy.bind(this)}>Buy this car</a>
+        {this.state.owner === `resource:com.epsi.blockchain.Person#${this.user.email}` ?
+          <a className="button new-repair" href={"/cars/" +  this.props.match.params.carId + "/addRepair"}> Declare reparation </a> :
+          <button className="button is-primary buy-button" onClick={this.buy.bind(this)}>Buy this car</button>
+        }
       </div>
     );
   }

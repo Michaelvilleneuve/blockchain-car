@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Header } from './ui/layouts';
 import { Login } from './ui/auth';
 import { CarList, CarShow, NewCar } from './ui/cars';
-import { SellsList } from "./ui/sells";
+import { SellsList, PurchasesList } from "./ui/sells";
 import { NewRepair } from "./ui/repair";
 import './App.css';
 
@@ -34,6 +34,7 @@ export default class App extends Component {
             <Route path="/cars/new" component={NewCar} />
             <Route path="/cars/:carId" component={CarShow} />
             <Route path="/sells" component={SellsList} />
+            <Route path="/purchases" component={PurchasesList} />
           </Switch>
         </Router>
       </div>

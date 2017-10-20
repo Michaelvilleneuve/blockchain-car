@@ -26,3 +26,9 @@
 .info:last-child {
   border-bottom: 0px solid #CCC;
 }
+.new-repair {
+  margin-bottom: 10px;
+}
+.buy-button {
+  margin-top: 10px;
+}
