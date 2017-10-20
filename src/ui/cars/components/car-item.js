@@ -4,12 +4,26 @@ import API from '../../../api';
 import './car-item.css';
 
 export class CarItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { done: false, sending: false };
+  }
   accept(isAccepted) {
+    this.setState({ sending: true });
     API.post('com.epsi.blockchain.HandleProposition', {
       car: `${this.props.numberplate}`,
       status: isAccepted ? 'OK' : 'KO',
       password: this.user.password,
     })
+    .then((res) => {
+      if (!res.error) {
+        alert(isAccepted ? 'Your car has been sold' : 'You have declined the proposition');
+        this.setState({ done: true, sending: false });
+      } else {
+        this.setState({ sending: false });
+        alert('Error')
+      }
+    });
   }
 
   render() {
@@ -36,16 +50,19 @@ export class CarItem extends Component {
               </div>
             </div>
           </Link>
-          <div className="actions">
-            {this.props.owner && this.props.owner === `resource:com.epsi.blockchain.Person#${this.user.email}` && this.props.status === 'PENDING' &&
-              <button onClick={() => this.accept(true)} className="button is-primary accept-offer">
-                <i className="fa fa-check" />
-              </button>}
-            {this.props.owner && this.props.owner === `resource:com.epsi.blockchain.Person#${this.user.email}` && this.props.status === 'PENDING' &&
-              <button onClick={() => this.accept(false)} className="button is-secondary">
-                <i className="fa fa-close" />
-              </button>}
-          </div>
+          {!this.state.done && !this.state.sending &&
+            <div className="actions">
+              {this.props.owner && this.props.owner === `resource:com.epsi.blockchain.Person#${this.user.email}` && this.props.status === 'PENDING' &&
+                <button onClick={() => this.accept(true)} className="button is-primary accept-offer">
+                  <i className="fa fa-check" />
+                </button>}
+              {this.props.owner && this.props.owner === `resource:com.epsi.blockchain.Person#${this.user.email}` && this.props.status === 'PENDING' &&
+                <button onClick={() => this.accept(false)} className="button is-secondary">
+                  <i className="fa fa-close" />
+                </button>}
+            </div>
+          }
+          {this.state.sending && <div className="actions">Loading...</div>}
         </article>
       </div>
     );
