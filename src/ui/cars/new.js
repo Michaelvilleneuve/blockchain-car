@@ -27,7 +27,7 @@ export class NewCar extends Component {
       .then((res) => {
         if (res.error) {
           this.setState({ creating: false });
-          alert('Impossible d\'enregister votre voiture');
+          alert('Can\' create a car');
         } else {
           this.setState({ created: true });
         }
@@ -42,14 +42,14 @@ export class NewCar extends Component {
           <Redirect to={`/cars/${this.state.numberplate}`} />
         }
         <div className="car-form">
-          <h3 className="title is-h3">Vendez votre voiture</h3>
+          <h3 className="title is-h3">Sell your car</h3>
 
           <div className="field">
             <input
               onChange={(numberplate) => this.setState({ numberplate: numberplate.target.value })}
               value={this.state.numberplate}
               className="input"
-              placeholder="Plaque d'imatriculation"
+              placeholder="Numberplate"
 
               name="numberplate"
             />
@@ -59,7 +59,7 @@ export class NewCar extends Component {
               onChange={(brand) => this.setState({ brand: brand.target.value })}
               value={this.state.brand}
               className="input"
-              placeholder="Marque"
+              placeholder="Brand"
               name="brand"
             />
           </div>
@@ -68,7 +68,7 @@ export class NewCar extends Component {
               onChange={(model) => this.setState({ model: model.target.value })}
               value={this.state.model}
               className="input"
-              placeholder="Modèle"
+              placeholder="Model"
               name="model"
             />
           </div>
@@ -78,7 +78,7 @@ export class NewCar extends Component {
               type="number"
               value={this.state.price}
               className="input"
-              placeholder="Prix"
+              placeholder="Price"
               name="price"
             />
           </div>
@@ -97,13 +97,13 @@ export class NewCar extends Component {
               onChange={(image) => this.setState({ image: image.target.value })}
               value={this.state.image}
               className="input"
-              placeholder="URl de l'image"
+              placeholder="Image URI"
               name="image"
             />
           </div>
 
           <button className="button is-primary" onClick={this.create.bind(this)}>
-            {!this.state.creating ? 'Ajouter une voiture' : 'Création en cours'}
+            {!this.state.creating ? 'Add this car' : 'Creating your car'}
           </button>
         </div>
       </div>
