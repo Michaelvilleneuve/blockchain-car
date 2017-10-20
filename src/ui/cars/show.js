@@ -5,7 +5,7 @@ import './show.css';
 export class CarShow extends Component {
   constructor(props) {
     super(props);
-    this.state = { pending: true };
+    this.state = { pending: true, buying: false };
   }
 
   componentWillMount() {
@@ -14,7 +14,7 @@ export class CarShow extends Component {
   }
 
   buy() {
-
+    this.setState({ buying: true });
 
     API.post('com.epsi.blockchain.SellCar', {
       $class: 'com.epsi.blockchain.SellCar',
@@ -24,6 +24,7 @@ export class CarShow extends Component {
       password: this.user.password
     })
     .then((res) => {
+      this.setState({ buying: false });
       if (res.error) {
         alert('Impossible de procéder à la transaction, une proposition est déjà en cours.');
       } else {
@@ -51,11 +52,9 @@ export class CarShow extends Component {
         <div className="info">
           <p>Repairs</p>
           <ul>
-          {(this.state.repair || []).map(repair => {
-            return (
-              <li> {repair.date} - {repair.price}€ : {repair.repair} </li>
-            )
-          })}
+          {(this.state.repair || []).map(repair =>
+            <li> {repair.date} - {repair.price}€ : {repair.repair} </li>
+          )}
           </ul>
         </div>
         <div className="info">
@@ -71,7 +70,9 @@ export class CarShow extends Component {
         </div>
         {this.state.owner === `resource:com.epsi.blockchain.Person#${this.user.email}` ?
           <a className="button new-repair" href={"/cars/" +  this.props.match.params.carId + "/addRepair"}> Declare reparation </a> :
-          <button className="button is-primary buy-button" onClick={this.buy.bind(this)}>Buy this car</button>
+          <button className="button is-primary buy-button" onClick={this.buy.bind(this)}>
+            {this.state.buying ? 'Buy this car' : 'Buying...'}
+          </button>
         }
       </div>
     );
